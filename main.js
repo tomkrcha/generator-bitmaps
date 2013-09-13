@@ -170,10 +170,8 @@
                 pixmap.width = parseInt(obj[0]);
                 pixmap.height = parseInt(obj[1]);
 
-                // the document pixmap could come in 16 or 32 row dividers, 16 is a single 0 byte, 32 is two 0 bytes
                 // divider value is on 12th byte
-                // the divider can be even more, but then it doesn't matter
-                var divider = pixmap.pixels[12]; // 16 or 32
+                var divider = pixmap.pixels[12]; // 16 or 32 or more
                 console.log("divider: "+divider);
 
                 // reconstruct buffer by bitmap size multiplied by 4 for RGBA
@@ -204,7 +202,7 @@
                             n+=1;
                         }else if(divider==32){
                             n+=2;
-                        }//else nothing... can be higher, but doesn't effect the bitmap
+                        }//else nothing... can be higher
                     }
                 }
 
